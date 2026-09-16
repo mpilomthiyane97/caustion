@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: caution-sa-server
+    runtime: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    plan: free
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: PAYFAST_MERCHANT_ID
+        sync: false
+      - key: PAYFAST_MERCHANT_KEY
+        sync: false
+      - key: PAYFAST_PASSPHRASE
+        sync: false
+      - key: PAYFAST_MODE
+        value: sandbox
+      - key: FRONTEND_URL
+        sync: false
+      - key: BACKEND_URL
+        sync: false
+      - key: DELIVERY_FEE_CENTS
+        value: 6000
+      - key: ADMIN_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: ALERT_EMAIL
+        sync: false
+      - key: FROM_EMAIL
+        sync: false
+      - key: NODE_ENV
+        value: production
+      - key: SELF_PING_URL
+        sync: false
