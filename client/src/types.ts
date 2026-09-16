@@ -28,7 +28,7 @@ export interface AdminOrder {
   _id: string;
   orderRef: string;
   status: OrderStatus;
-  customer: { name: string; phone: string; email: string };
+  customer: { name: string; phone: string };
   address: { street: string; suburb: string; city: string; postalCode: string; province: string };
   deliveryNotes: string;
   items: { productId: string; name: string; unitPriceCents: number; quantity: number }[];

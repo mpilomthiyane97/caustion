@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { OrderModel } from '../models/Order';
 import { verifyItnSignature, isRequestFromPayfast, validateWithPayfast } from '../lib/payfast';
-import { sendAlertEmail, sendCustomerConfirmationEmail } from '../lib/email';
 
 export const payfastRouter = Router();
 
@@ -66,12 +65,6 @@ payfastRouter.post('/notify', async (req, res) => {
 
       if (updated) {
         console.log('[itn] order marked paid', { orderRef: updated.orderRef });
-        try {
-          await sendAlertEmail(updated);
-          await sendCustomerConfirmationEmail(updated);
-        } catch (err) {
-          console.error('[itn] alert/confirmation email failed', err);
-        }
       } else {
         console.log('[itn] duplicate ITN ignored, order already processed', { orderRef: order.orderRef });
       }

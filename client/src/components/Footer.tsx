@@ -10,11 +10,6 @@ export default function Footer() {
           <p className="font-heading font-bold text-white text-lg">Caution SA</p>
           <p className="mt-1 text-sm">Be cautious.</p>
           <p className="mt-4 text-sm">
-            <a href="mailto:hello@cautionsa.co.za" className="hover:text-amber">
-              hello@cautionsa.co.za
-            </a>
-          </p>
-          <p className="text-sm">
             <a
               href={`https://wa.me/${whatsappNumber}`}
               target="_blank"

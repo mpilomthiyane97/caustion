@@ -24,9 +24,6 @@ export const config = {
   backendUrl: required('BACKEND_URL'),
   deliveryFeeCents: Number(process.env.DELIVERY_FEE_CENTS ?? 6000),
   adminKey: required('ADMIN_KEY'),
-  resendApiKey: process.env.RESEND_API_KEY ?? '',
-  alertEmail: process.env.ALERT_EMAIL ?? '',
-  fromEmail: process.env.FROM_EMAIL ?? '',
   selfPingUrl: process.env.SELF_PING_URL ?? '',
 };
 

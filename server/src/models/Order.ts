@@ -22,7 +22,6 @@ const orderSchema = new Schema(
     customer: {
       name: { type: String, required: true },
       phone: { type: String, required: true },
-      email: { type: String, required: true },
     },
     address: {
       street: { type: String, required: true },
@@ -52,7 +51,7 @@ type SchemaOrder = InferSchemaType<typeof orderSchema>;
 
 export interface Order extends Omit<SchemaOrder, 'customer' | 'address' | 'consents'> {
   _id: Types.ObjectId;
-  customer: { name: string; phone: string; email: string };
+  customer: { name: string; phone: string };
   address: { street: string; suburb: string; city: string; postalCode: string; province: string };
   consents: { ageConfirmed: boolean; lawfulUseConfirmed: boolean; consentAt: Date };
 }

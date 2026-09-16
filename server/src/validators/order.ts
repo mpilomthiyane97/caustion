@@ -8,8 +8,7 @@ export const createOrderSchema = z.object({
     phone: z
       .string()
       .trim()
-      .regex(saPhoneRegex, 'Enter a valid South African phone number, e.g. 082 123 4567'),
-    email: z.string().trim().email('Enter a valid email address').max(200),
+      .regex(saPhoneRegex, 'Enter a valid South African WhatsApp number, e.g. 082 123 4567'),
   }),
   address: z.object({
     street: z.string().trim().min(3).max(200),

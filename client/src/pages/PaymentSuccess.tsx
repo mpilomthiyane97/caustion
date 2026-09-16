@@ -92,7 +92,7 @@ export default function PaymentSuccess() {
             We&apos;re confirming your payment
           </h1>
           <p className="mt-2 text-ink/70">
-            You&apos;ll get an email shortly once it&apos;s confirmed. No need to pay again.
+            We&apos;ll message you on WhatsApp shortly once it&apos;s confirmed. No need to pay again.
           </p>
         </>
       )}

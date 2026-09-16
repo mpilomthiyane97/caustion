@@ -33,7 +33,6 @@ export interface PayfastPaymentParams {
   amountCents: number;
   nameFirst: string;
   nameLast: string;
-  email: string;
   cellNumber: string;
 }
 
@@ -50,7 +49,6 @@ export function buildPayfastPayment(params: PayfastPaymentParams): {
     ['notify_url', `${config.backendUrl}/api/payfast/notify`],
     ['name_first', params.nameFirst],
     ['name_last', params.nameLast],
-    ['email_address', params.email],
     ['cell_number', params.cellNumber],
     ['m_payment_id', params.orderRef],
     ['amount', amount],

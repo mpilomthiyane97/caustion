@@ -49,9 +49,6 @@ npm run dev              # http://localhost:5173
 | `BACKEND_URL` | Deployed Render URL (used for the PayFast notify URL) |
 | `DELIVERY_FEE_CENTS` | Flat delivery fee in cents, added on top of product prices. Currently `0` since delivery within Gauteng is baked into the displayed product prices — only change this if you stop including delivery in prices. |
 | `ADMIN_KEY` | Long random string, required in `x-admin-key` header for `/api/admin/*` |
-| `RESEND_API_KEY` | From resend.com |
-| `ALERT_EMAIL` | Where new-paid-order alerts are sent |
-| `FROM_EMAIL` | Verified sender in Resend |
 | `NODE_ENV` | `development` locally, `production` on Render |
 | `SELF_PING_URL` | Your public Render `/api/health` URL — only used when `NODE_ENV=production` |
 
@@ -60,7 +57,7 @@ npm run dev              # http://localhost:5173
 | Variable | Notes |
 |---|---|
 | `VITE_API_URL` | Deployed Render backend URL |
-| `VITE_WHATSAPP_NUMBER` | International format, no `+`, e.g. `27821234567` |
+| `VITE_WHATSAPP_NUMBER` | Support/contact WhatsApp number shown on the storefront (footer, floating button, Contact page). International format, no `+`, e.g. `27843507715` |
 
 ### Keep-alive script
 
@@ -126,8 +123,7 @@ Recommended: also add the health URL to [UptimeRobot](https://uptimerobot.com) o
 
 - [ ] Sandbox purchase end-to-end: add items to cart → checkout → redirected to PayFast sandbox → pay → redirected back to `/payment/success` → status shows "Payment confirmed".
 - [ ] ITN marks the order `paid` in the database; sending the same ITN twice (e.g. replaying it) does not double-process or error — the second call is a no-op because the update filter requires `status: 'pending'`.
-- [ ] Alert email (to `ALERT_EMAIL`) and customer confirmation email both arrive after payment.
-- [ ] Admin (`/admin`) lists the paid order, "Copy address" copies the full delivery address, WhatsApp link opens a chat with the customer's number, and "Mark delivered" updates status and sets `deliveredAt`.
+- [ ] Admin (`/admin`) lists the paid order, "Copy address" copies the full delivery address, WhatsApp link opens a chat with the customer's number, "Send payment confirmation" opens WhatsApp with a pre-filled confirmation message, and "Mark delivered" updates status and sets `deliveredAt`.
 - [ ] Cancelled payment flow: cancel from PayFast → redirected to `/payment/cancelled` → cart is still intact.
 - [ ] Price tampering: attempt to POST `/api/orders` with a modified `priceCents`/amount is ignored — the server always recalculates from the database.
 - [ ] Keep-alive workflow: manually trigger `workflow_dispatch` in GitHub Actions and confirm it hits `/api/health` successfully.

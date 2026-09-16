@@ -76,7 +76,6 @@ ordersRouter.post('/', async (req, res) => {
     amountCents: totalCents,
     nameFirst: first,
     nameLast: last,
-    email: input.customer.email,
     cellNumber: input.customer.phone,
   });
 

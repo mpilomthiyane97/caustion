@@ -26,7 +26,7 @@ export function fetchProduct(slug: string): Promise<Product> {
 }
 
 export interface CreateOrderPayload {
-  customer: { name: string; phone: string; email: string };
+  customer: { name: string; phone: string };
   address: { street: string; suburb: string; city: string; postalCode: string; province: string };
   deliveryNotes: string;
   items: { slug: string; quantity: number }[];

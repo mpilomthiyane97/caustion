@@ -9,7 +9,6 @@ import type { Product } from '../types';
 interface FormState {
   name: string;
   phone: string;
-  email: string;
   street: string;
   suburb: string;
   city: string;
@@ -22,7 +21,6 @@ interface FormState {
 const initialForm: FormState = {
   name: '',
   phone: '',
-  email: '',
   street: '',
   suburb: '',
   city: '',
@@ -82,7 +80,7 @@ export default function Checkout() {
 
     try {
       const payment = await createOrder({
-        customer: { name: form.name, phone: form.phone, email: form.email },
+        customer: { name: form.name, phone: form.phone },
         address: {
           street: form.street,
           suburb: form.suburb,
@@ -128,7 +126,7 @@ export default function Checkout() {
           <legend className="font-heading font-semibold text-ink mb-1">Your details</legend>
           <Field label="Full name" id="name" value={form.name} onChange={update('name')} required />
           <Field
-            label="Phone number"
+            label="WhatsApp number"
             id="phone"
             type="tel"
             placeholder="082 123 4567"
@@ -136,14 +134,10 @@ export default function Checkout() {
             onChange={update('phone')}
             required
           />
-          <Field
-            label="Email address"
-            id="email"
-            type="email"
-            value={form.email}
-            onChange={update('email')}
-            required
-          />
+          <p className="text-xs text-ink/50 -mt-2">
+            We&apos;ll send your payment confirmation and delivery updates to this number on
+            WhatsApp.
+          </p>
         </fieldset>
 
         <fieldset className="space-y-4">

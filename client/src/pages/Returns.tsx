@@ -13,8 +13,8 @@ export default function Returns() {
         <h2 className="font-heading font-semibold text-ink text-base mt-6">Faulty or damaged products</h2>
         <p>
           If a product arrives damaged, defective, or not as described, contact us within 7 days
-          of delivery via WhatsApp or email with your order reference and photos of the item. We
-          will arrange a repair, replacement, or refund as appropriate.
+          of delivery via WhatsApp with your order reference and photos of the item. We will
+          arrange a repair, replacement, or refund as appropriate.
         </p>
         <h2 className="font-heading font-semibold text-ink text-base mt-6">Change of mind</h2>
         <p>

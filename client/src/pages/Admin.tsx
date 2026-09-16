@@ -32,10 +32,15 @@ function formatAddress(order: AdminOrder): string {
   ].join(', ');
 }
 
-function whatsappHref(phone: string): string {
+function whatsappHref(phone: string, text?: string): string {
   const digits = phone.replace(/\D/g, '');
   const normalized = digits.startsWith('0') ? `27${digits.slice(1)}` : digits;
-  return `https://wa.me/${normalized}`;
+  const query = text ? `?text=${encodeURIComponent(text)}` : '';
+  return `https://wa.me/${normalized}${query}`;
+}
+
+function paymentConfirmationMessage(order: AdminOrder): string {
+  return `Hi ${order.customer.name}! Your Caution SA order ${order.orderRef} payment has been received. We'll message you here on WhatsApp when your Uber delivery is on the way. Thank you for your order!`;
 }
 
 export default function Admin() {
@@ -192,7 +197,6 @@ export default function Admin() {
                   >
                     {order.customer.phone} (WhatsApp)
                   </a>
-                  <p className="text-ink/60">{order.customer.email}</p>
                 </div>
                 <div>
                   <p className="text-ink/80">{formatAddress(order)}</p>
@@ -222,13 +226,23 @@ export default function Admin() {
               </p>
 
               {order.status === 'paid' && (
-                <button
-                  type="button"
-                  onClick={() => handleMarkDelivered(order)}
-                  className="mt-3 rounded-lg bg-success px-4 py-2 text-sm font-semibold text-white hover:brightness-110"
-                >
-                  Mark delivered
-                </button>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <a
+                    href={whatsappHref(order.customer.phone, paymentConfirmationMessage(order))}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-lg bg-amber px-4 py-2 text-sm font-semibold text-ink hover:bg-amber-dark"
+                  >
+                    Send payment confirmation
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => handleMarkDelivered(order)}
+                    className="rounded-lg bg-success px-4 py-2 text-sm font-semibold text-white hover:brightness-110"
+                  >
+                    Mark delivered
+                  </button>
+                </div>
               )}
             </li>
           ))}

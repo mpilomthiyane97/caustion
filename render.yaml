@@ -26,12 +26,6 @@ services:
         value: 0
       - key: ADMIN_KEY
         sync: false
-      - key: RESEND_API_KEY
-        sync: false
-      - key: ALERT_EMAIL
-        sync: false
-      - key: FROM_EMAIL
-        sync: false
       - key: NODE_ENV
         value: production
       - key: SELF_PING_URL

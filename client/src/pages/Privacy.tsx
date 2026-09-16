@@ -12,14 +12,14 @@ export default function Privacy() {
         </p>
         <h2 className="font-heading font-semibold text-ink text-base mt-6">What we collect</h2>
         <p>
-          To process and deliver your order, we collect your name, phone number, email address,
-          and delivery address. We do not store your card or banking details — these are handled
-          directly by PayFast.
+          To process and deliver your order, we collect your name, WhatsApp number, and delivery
+          address. We do not store your card or banking details — these are handled directly by
+          PayFast.
         </p>
         <h2 className="font-heading font-semibold text-ink text-base mt-6">How we use it</h2>
         <p>
           We use your information to process payment, arrange Uber delivery, send order and
-          delivery updates via email and WhatsApp, and to comply with legal requirements.
+          delivery updates via WhatsApp, and to comply with legal requirements.
         </p>
         <h2 className="font-heading font-semibold text-ink text-base mt-6">Who we share it with</h2>
         <p>
