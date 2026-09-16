@@ -8,7 +8,7 @@ export default function Terms() {
       <div className="mt-6 space-y-4 text-sm text-ink/80 leading-relaxed">
         <p>
           By using this website and placing an order, you agree to these terms. Caution SA sells
-          self-defence products, including pepper spray and stun guns, for lawful personal use by
+          self-defence products, including pepper spray and tasers, for lawful personal use by
           adults in South Africa.
         </p>
         <h2 className="font-heading font-semibold text-ink text-base mt-6">Eligibility</h2>

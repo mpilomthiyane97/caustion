@@ -1,6 +1,6 @@
 # Caution SA
 
-Online store for pepper spray and stun guns. Payment via PayFast, manual delivery via Uber to addresses in Gauteng.
+Online store for pepper spray and tasers. Payment via PayFast, manual delivery via Uber to addresses in Gauteng.
 
 Monorepo:
 - `client/` — React + Vite + TypeScript + Tailwind (deploy: Netlify)
@@ -47,7 +47,7 @@ npm run dev              # http://localhost:5173
 | `PAYFAST_MODE` | `sandbox` or `live` — switches API host automatically |
 | `FRONTEND_URL` | Deployed Netlify URL (used for PayFast return/cancel URLs and CORS) |
 | `BACKEND_URL` | Deployed Render URL (used for the PayFast notify URL) |
-| `DELIVERY_FEE_CENTS` | Flat delivery fee in cents, e.g. `6000` = R60.00 |
+| `DELIVERY_FEE_CENTS` | Flat delivery fee in cents, added on top of product prices. Currently `0` since delivery within Gauteng is baked into the displayed product prices — only change this if you stop including delivery in prices. |
 | `ADMIN_KEY` | Long random string, required in `x-admin-key` header for `/api/admin/*` |
 | `RESEND_API_KEY` | From resend.com |
 | `ALERT_EMAIL` | Where new-paid-order alerts are sent |
@@ -82,7 +82,7 @@ cd server
 npm run seed
 ```
 
-Seeds 6 placeholder products (3 pepper spray, 3 stun gun) — edit `server/src/scripts/seed.ts` with real names, descriptions, prices (in cents) and image paths, then re-run.
+Seeds the 2 live products (SABRE Red pepper spray, VoltShield taser) — edit `server/src/scripts/seed.ts` to change names, descriptions, prices (in cents) or image paths, then re-run.
 
 ## 5. Deploying
 

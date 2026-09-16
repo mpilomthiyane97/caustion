@@ -41,7 +41,7 @@ export default function Footer() {
             </li>
             <li>
               <Link to="/shop?category=stun-gun" className="hover:text-amber">
-                Stun guns
+                Tasers
               </Link>
             </li>
           </ul>

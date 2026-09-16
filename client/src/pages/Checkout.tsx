@@ -216,10 +216,10 @@ export default function Checkout() {
         </fieldset>
 
         <div className="flex items-center justify-between border-t border-ink/10 pt-4">
-          <span className="text-sm text-ink/70">Subtotal</span>
+          <span className="text-sm text-ink/70">Total</span>
           <span className="font-semibold text-ink">{formatCents(subtotal)}</span>
         </div>
-        <p className="text-xs text-ink/50 -mt-4">Delivery fee is added on the next screen.</p>
+        <p className="text-xs text-success -mt-4">Delivery within Gauteng is included — no extra fee.</p>
 
         {error && <p className="text-sm text-red-700">{error}</p>}
         {slow && (

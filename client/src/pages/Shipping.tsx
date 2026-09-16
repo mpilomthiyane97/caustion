@@ -23,7 +23,7 @@ export default function Shipping() {
           future.
         </p>
         <h2 className="font-heading font-semibold text-ink text-base mt-6">Delivery fee</h2>
-        <p>A flat delivery fee is shown at checkout before you pay, in addition to your product subtotal.</p>
+        <p>Delivery within Gauteng is included in the price shown for every product — there is no separate delivery fee at checkout.</p>
       </div>
     </div>
   );

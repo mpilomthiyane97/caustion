@@ -13,11 +13,13 @@ export default function ProductDetail() {
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
     if (!slug) return;
     setProduct(null);
     setError(null);
+    setActiveImage(0);
     fetchProduct(slug).catch(() => setError('Product not found.')).then((p) => {
       if (p) setProduct(p);
     });
@@ -49,17 +51,38 @@ export default function ProductDetail() {
       <SEO title={product.name} description={product.description} />
 
       <div className="grid sm:grid-cols-2 gap-8">
-        <div className="aspect-square rounded-xl bg-sand overflow-hidden">
-          <ProductImage
-            src={product.images[0]}
-            alt={product.name}
-            className="h-full w-full object-cover"
-          />
+        <div>
+          <div className="aspect-square rounded-xl bg-sand overflow-hidden">
+            <ProductImage
+              src={product.images[activeImage]}
+              alt={product.name}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          {product.images.length > 1 && (
+            <div className="mt-3 grid grid-cols-4 gap-2">
+              {product.images.map((image, index) => (
+                <button
+                  key={image}
+                  type="button"
+                  onClick={() => setActiveImage(index)}
+                  aria-label={`Show photo ${index + 1} of ${product.name}`}
+                  aria-current={index === activeImage}
+                  className={`aspect-square rounded-lg overflow-hidden bg-sand border-2 ${
+                    index === activeImage ? 'border-amber' : 'border-transparent'
+                  }`}
+                >
+                  <ProductImage src={image} alt="" className="h-full w-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <div>
           <h1 className="font-heading text-2xl font-bold text-ink">{product.name}</h1>
           <p className="mt-2 text-xl font-semibold text-ink">{formatCents(product.priceCents)}</p>
+          <p className="text-xs text-success font-medium">Includes delivery within Gauteng</p>
           <p className="mt-4 text-ink/80 leading-relaxed">{product.description}</p>
 
           {Object.keys(product.specs).length > 0 && (

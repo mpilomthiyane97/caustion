@@ -123,7 +123,7 @@ export default function Cart() {
               {formatCents(subtotal)}
             </span>
           </div>
-          <p className="mt-1 text-xs text-ink/50">Delivery fee is calculated at checkout.</p>
+          <p className="mt-1 text-xs text-success">Delivery within Gauteng is included — no extra fee at checkout.</p>
 
           <button
             type="button"

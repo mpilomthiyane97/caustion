@@ -20,11 +20,11 @@ const products = [
     inStock: true,
   },
   {
-    slug: 'voltshield-compact-stun-gun',
-    name: 'VoltShield Compact Stun Gun',
+    slug: 'voltshield-compact-taser',
+    name: 'VoltShield Compact Taser',
     category: 'stun-gun' as const,
     description:
-      'A compact, rechargeable stun device sized to fit in a small bag or pocket without adding bulk. Fitted with a safety switch to help prevent accidental activation, and available in black or pink.',
+      'A compact, rechargeable taser sized to fit in a small bag or pocket without adding bulk. Fitted with a safety switch to help prevent accidental activation, and available in black or pink.',
     priceCents: 40000,
     images: ['/taser/taser1.webp', '/taser/taser2.jpg'],
     specs: {

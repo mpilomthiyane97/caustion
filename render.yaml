@@ -23,7 +23,7 @@ services:
       - key: BACKEND_URL
         sync: false
       - key: DELIVERY_FEE_CENTS
-        value: 6000
+        value: 0
       - key: ADMIN_KEY
         sync: false
       - key: RESEND_API_KEY

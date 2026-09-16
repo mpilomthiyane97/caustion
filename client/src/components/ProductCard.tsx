@@ -5,7 +5,7 @@ import ProductImage from './ProductImage';
 
 const categoryLabel: Record<Product['category'], string> = {
   'pepper-spray': 'Pepper spray',
-  'stun-gun': 'Stun gun',
+  'stun-gun': 'Taser',
 };
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -27,6 +27,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </span>
         <h3 className="font-heading font-semibold text-ink">{product.name}</h3>
         <p className="mt-1 font-semibold text-ink">{formatCents(product.priceCents)}</p>
+        <p className="text-xs text-success">Includes delivery</p>
         {!product.inStock && <span className="text-xs text-red-700">Out of stock</span>}
       </div>
     </Link>

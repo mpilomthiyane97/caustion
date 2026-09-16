@@ -24,7 +24,7 @@ export default function Home() {
     <div>
       <SEO
         title="Home"
-        description="Pepper spray and stun guns for everyday safety, delivered via Uber across Gauteng."
+        description="Pepper spray and tasers for everyday safety, delivered via Uber across Gauteng."
       />
 
       <section className="bg-ink text-white">
@@ -71,12 +71,12 @@ export default function Home() {
           to="/shop?category=stun-gun"
           className="rounded-xl bg-sand p-8 hover:shadow-md transition-shadow"
         >
-          <h2 className="font-heading text-xl font-bold text-ink">Stun guns</h2>
+          <h2 className="font-heading text-xl font-bold text-ink">Tasers</h2>
           <p className="mt-2 text-ink/70 text-sm">
-            Rechargeable, slim devices designed to be easy to carry and simple to use.
+            Rechargeable, compact devices designed to be easy to carry and simple to use.
           </p>
           <span className="mt-4 inline-block text-amber-dark font-semibold text-sm">
-            Shop stun guns &rarr;
+            Shop tasers &rarr;
           </span>
         </Link>
       </section>
