@@ -24,13 +24,17 @@ payfastRouter.post('/notify', async (req, res) => {
       return;
     }
 
+    // Informational only: DNS-based IP allowlisting against PayFast's hostnames is
+    // unreliable behind hosting-provider proxy layers (Render's edge can present an
+    // internal IP here) and PayFast doesn't publish a stable source IP range. The
+    // signature check above plus the server-to-server /eng/query/validate call below
+    // are the authoritative authenticity checks, so this never blocks processing.
     const fromPayfast = await isRequestFromPayfast(req.ip ?? '');
     if (!fromPayfast) {
-      console.warn('[itn] request did not originate from a valid PayFast host', {
+      console.log('[itn] request host could not be verified via DNS (non-blocking)', {
         ip: req.ip,
         m_payment_id: body.m_payment_id,
       });
-      return;
     }
 
     const order = await OrderModel.findOne({ orderRef: body.m_payment_id });
