@@ -17,7 +17,10 @@ payfastRouter.post('/notify', async (req, res) => {
 
   try {
     if (!verifyItnSignature(body)) {
-      console.warn('[itn] invalid signature', { m_payment_id: body.m_payment_id });
+      console.warn('[itn] invalid signature', {
+        m_payment_id: body.m_payment_id,
+        fieldsReceived: Object.keys(body).filter((k) => k !== 'signature'),
+      });
       return;
     }
 

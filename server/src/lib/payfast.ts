@@ -12,10 +12,14 @@ export function pfEncode(value: string): string {
     .replace(/[!'()*~]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase());
 }
 
-function buildSignatureString(pairs: [string, string][]): string {
-  const parts = pairs
-    .filter(([, value]) => value !== undefined && value !== null && value !== '')
-    .map(([key, value]) => `${key}=${pfEncode(String(value))}`);
+function buildSignatureString(
+  pairs: [string, string][],
+  options: { skipEmpty: boolean }
+): string {
+  const relevant = options.skipEmpty
+    ? pairs.filter(([, value]) => value !== undefined && value !== null && value !== '')
+    : pairs;
+  const parts = relevant.map(([key, value]) => `${key}=${pfEncode(String(value ?? '').trim())}`);
   let str = parts.join('&');
   if (config.payfast.passphrase) {
     str += `&passphrase=${pfEncode(config.payfast.passphrase)}`;
@@ -23,8 +27,23 @@ function buildSignatureString(pairs: [string, string][]): string {
   return str;
 }
 
+/**
+ * For the outbound payment redirect: we only ever include fields we
+ * deliberately chose to send, so skipping blanks is a no-op safeguard.
+ */
 export function signPairs(pairs: [string, string][]): string {
-  const str = buildSignatureString(pairs);
+  const str = buildSignatureString(pairs, { skipEmpty: true });
+  return crypto.createHash('md5').update(str).digest('hex');
+}
+
+/**
+ * For ITN verification: PayFast posts a large fixed set of fields, many
+ * blank (custom_str1-5, custom_int1-5, etc.), and computes its own
+ * signature over ALL of them including blanks, in POST order. Skipping
+ * blanks here would produce a different string and always fail.
+ */
+function signPairsForItn(pairs: [string, string][]): string {
+  const str = buildSignatureString(pairs, { skipEmpty: false });
   return crypto.createHash('md5').update(str).digest('hex');
 }
 
@@ -66,7 +85,7 @@ export function verifyItnSignature(body: Record<string, string>): boolean {
   const { signature, ...rest } = body;
   if (!signature) return false;
   const pairs = Object.entries(rest) as [string, string][];
-  const expected = signPairs(pairs);
+  const expected = signPairsForItn(pairs);
   return expected.toLowerCase() === String(signature).toLowerCase();
 }
 
