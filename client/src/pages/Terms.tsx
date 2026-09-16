@@ -2,7 +2,7 @@ import SEO from '../components/SEO';
 
 export default function Terms() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 prose-sm">
+    <div className="mx-auto max-w-3xl px-4 py-12">
       <SEO title="Terms" description="Terms of use for Caution SA." />
       <h1 className="font-heading text-2xl font-bold text-ink">Terms &amp; Conditions</h1>
       <div className="mt-6 space-y-4 text-sm text-ink/80 leading-relaxed">

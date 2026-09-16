@@ -213,7 +213,7 @@ export default function Checkout() {
           <span className="text-sm text-ink/70">Total</span>
           <span className="font-semibold text-ink">{formatCents(subtotal)}</span>
         </div>
-        <p className="text-xs text-success -mt-4">Delivery within Gauteng is included — no extra fee.</p>
+        <p className="text-xs text-success -mt-4">Delivery within Gauteng is included, with no extra fee.</p>
 
         {error && <p className="text-sm text-red-700">{error}</p>}
         {slow && (

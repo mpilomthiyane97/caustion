@@ -6,9 +6,27 @@ import { fetchProducts } from '../lib/api';
 import type { Product } from '../types';
 
 const safetyTips = [
-  'Carry your device somewhere you can reach it in under two seconds — a jacket pocket or bag pocket you use often, not the bottom of your bag.',
+  'Carry your device somewhere you can reach it in under two seconds, like a jacket pocket or a bag pocket you use often, not the bottom of your bag.',
   'Practice the safety catch at home so it is second nature before you ever need to use it.',
   'Share your live location with someone you trust when walking or taking a lift alone at night.',
+];
+
+const howItWorks = [
+  {
+    step: '1',
+    title: 'Choose and pay',
+    body: 'Add what you need to your cart and pay through PayFast, a payment processor used by online stores across South Africa. We never see or store your card details.',
+  },
+  {
+    step: '2',
+    title: 'We get it ready',
+    body: 'Once PayFast confirms your payment, we prepare your order the same day.',
+  },
+  {
+    step: '3',
+    title: 'Delivered by Uber',
+    body: "We book an Uber to your address in Gauteng and WhatsApp you the moment it's on its way.",
+  },
 ];
 
 export default function Home() {
@@ -35,7 +53,7 @@ export default function Home() {
           </p>
           <p className="mt-5 max-w-xl mx-auto text-white/80">
             Practical self-defence tools for everyday life, chosen to be simple to carry and easy
-            to use — starting with women across the East Rand and greater Gauteng.
+            to use. We're starting with women across the East Rand and greater Gauteng.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
             <Link
@@ -104,20 +122,21 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid sm:grid-cols-3 gap-4 text-center">
-          <div className="rounded-xl border border-ink/10 p-6">
-            <p className="font-heading font-semibold text-ink">Secure PayFast payment</p>
-            <p className="mt-1 text-sm text-ink/70">Your payment details never touch our servers.</p>
-          </div>
-          <div className="rounded-xl border border-ink/10 p-6">
-            <p className="font-heading font-semibold text-ink">Uber delivery in Gauteng</p>
-            <p className="mt-1 text-sm text-ink/70">Discreet delivery straight to your door.</p>
-          </div>
-          <div className="rounded-xl border border-ink/10 p-6">
-            <p className="font-heading font-semibold text-ink">WhatsApp support</p>
-            <p className="mt-1 text-sm text-ink/70">Real answers from a real person, fast.</p>
-          </div>
+        <h2 className="font-heading text-2xl font-bold text-ink mb-5">How it works</h2>
+        <div className="grid sm:grid-cols-3 gap-4">
+          {howItWorks.map((item) => (
+            <div key={item.step} className="rounded-xl border border-ink/10 p-6">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-amber font-heading font-bold text-sm">
+                {item.step}
+              </span>
+              <p className="mt-3 font-heading font-semibold text-ink">{item.title}</p>
+              <p className="mt-1 text-sm text-ink/70">{item.body}</p>
+            </div>
+          ))}
         </div>
+        <p className="mt-6 text-sm text-ink/60">
+          Questions before you order? <Link to="/contact" className="text-amber-dark font-semibold">Message us on WhatsApp</Link> and we'll usually reply within a few hours.
+        </p>
       </section>
     </div>
   );

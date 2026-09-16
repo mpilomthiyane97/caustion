@@ -24,7 +24,7 @@ export function createApp(): Express {
   });
 
   // PayFast ITN: urlencoded body, raw body captured for the server-to-server validate call.
-  // Intentionally no CORS here — this is a server-to-server callback, not a browser request.
+  // Intentionally no CORS here: this is a server-to-server callback, not a browser request.
   app.use(
     '/api/payfast',
     express.urlencoded({

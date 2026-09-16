@@ -22,7 +22,7 @@ function writeCart(cart: CartLine[]): void {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
     window.dispatchEvent(new CustomEvent('cart-updated'));
   } catch {
-    // localStorage unavailable (private browsing etc.) — cart just won't persist
+    // localStorage unavailable (private browsing etc.), cart just won't persist
   }
 }
 

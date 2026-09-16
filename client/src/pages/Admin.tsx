@@ -85,7 +85,7 @@ export default function Admin() {
       setCopiedRef(order.orderRef);
       setTimeout(() => setCopiedRef(null), 1500);
     } catch {
-      // clipboard unavailable — user can select the text manually
+      // clipboard unavailable, user can select the text manually
     }
   };
 
@@ -217,7 +217,7 @@ export default function Admin() {
               <ul className="mt-3 text-sm text-ink/80 space-y-0.5">
                 {order.items.map((item) => (
                   <li key={item.productId}>
-                    {item.name} x{item.quantity} — {formatCents(item.unitPriceCents * item.quantity)}
+                    {item.name} x{item.quantity} ({formatCents(item.unitPriceCents * item.quantity)})
                   </li>
                 ))}
               </ul>
