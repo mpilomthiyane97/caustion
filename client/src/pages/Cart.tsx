@@ -5,6 +5,7 @@ import { fetchProducts } from '../lib/api';
 import { getCart, removeFromCart, updateCartQuantity } from '../lib/cart';
 import { formatCents } from '../lib/format';
 import type { CartLine, Product } from '../types';
+import ProductImage from '../components/ProductImage';
 
 interface Line {
   product: Product;
@@ -73,13 +74,11 @@ export default function Cart() {
             {lines.map(({ product, quantity }) => (
               <li key={product.slug} className="flex items-center gap-4 py-4">
                 <div className="h-16 w-16 shrink-0 rounded-lg bg-sand overflow-hidden">
-                  {product.images[0] && (
-                    <img
-                      src={product.images[0]}
-                      alt={product.name}
-                      className="h-full w-full object-cover"
-                    />
-                  )}
+                  <ProductImage
+                    src={product.images[0]}
+                    alt={product.name}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-medium text-ink truncate">{product.name}</p>

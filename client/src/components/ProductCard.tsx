@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import type { Product } from '../types';
 import { formatCents } from '../lib/format';
+import ProductImage from './ProductImage';
 
 const categoryLabel: Record<Product['category'], string> = {
   'pepper-spray': 'Pepper spray',
@@ -14,18 +15,11 @@ export default function ProductCard({ product }: { product: Product }) {
       className="group flex flex-col rounded-xl border border-ink/10 bg-white overflow-hidden hover:shadow-md transition-shadow"
     >
       <div className="aspect-square bg-sand overflow-hidden">
-        {product.images[0] ? (
-          <img
-            src={product.images[0]}
-            alt={product.name}
-            loading="lazy"
-            className="h-full w-full object-cover group-hover:scale-105 transition-transform"
-          />
-        ) : (
-          <div className="h-full w-full flex items-center justify-center text-ink/30 text-sm">
-            No image
-          </div>
-        )}
+        <ProductImage
+          src={product.images[0]}
+          alt={product.name}
+          className="h-full w-full object-cover group-hover:scale-105 transition-transform"
+        />
       </div>
       <div className="p-4 flex flex-col gap-1">
         <span className="text-xs font-medium text-amber-dark uppercase tracking-wide">

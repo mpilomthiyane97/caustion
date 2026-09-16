@@ -5,6 +5,7 @@ import { fetchProduct } from '../lib/api';
 import { addToCart } from '../lib/cart';
 import { formatCents } from '../lib/format';
 import type { Product } from '../types';
+import ProductImage from '../components/ProductImage';
 
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -49,17 +50,11 @@ export default function ProductDetail() {
 
       <div className="grid sm:grid-cols-2 gap-8">
         <div className="aspect-square rounded-xl bg-sand overflow-hidden">
-          {product.images[0] ? (
-            <img
-              src={product.images[0]}
-              alt={product.name}
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <div className="h-full w-full flex items-center justify-center text-ink/30">
-              No image
-            </div>
-          )}
+          <ProductImage
+            src={product.images[0]}
+            alt={product.name}
+            className="h-full w-full object-cover"
+          />
         </div>
 
         <div>
